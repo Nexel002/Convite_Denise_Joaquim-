@@ -19,9 +19,8 @@
   },
 
   "whatsapp": {
-    "numero": "258852074332",
-    "numeroVisivel": "+258 852074332",
-    "numeroOriginalDoConvite": "+258 871297123",
+    "numero": "258871297123",
+    "numeroVisivel": "+258 871297123",
     "mensagemSim": "Olá! Sou {nome} e confirmo presença no casamento da Denise e do Joaquim ({pessoas}).",
     "mensagemNao": "Olá! Sou {nome} e infelizmente não poderei ir ao casamento da Denise e do Joaquim.",
     "mensagemConvite": "Olá, {nome}! A Denise e o Joaquim têm a alegria de convidar você para o seu casamento. Abra o seu convite aqui: {link}"
