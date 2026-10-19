@@ -1,0 +1,184 @@
+<!-- Envelope de abertura -->
+<div class="env-fundo" id="envelope">
+  <button class="env-btn" id="abrir" type="button" aria-label="Abrir o convite">
+    <div class="env">
+      <div class="env-corpo"></div>
+      <div class="env-carta"></div>
+      <div class="env-aba"></div>
+      <div class="selo" aria-hidden="true">{{noivos.iniciais}}</div>
+      <p class="env-para" id="env-para">{{noivos.noiva}} &amp; {{noivos.noivo}}</p>
+    </div>
+  </button>
+  <p class="env-dica">Toque para abrir</p>
+</div>
+
+<div class="capulana" aria-hidden="true"></div>
+
+<div class="coluna">
+  <header class="capa" data-entrada>
+    <p class="saudacao script" id="saudacao">Querido convidado,</p>
+    <p class="convite-texto">{{textos.convite}}</p>
+<!--opt:capa-->
+    <div class="arco"><img src="{{img:capa}}" alt="{{imagens.capa.alt}}"></div>
+<!--/opt-->
+    <h1 class="nomes"><span>{{noivos.noiva}}</span><span class="e">e</span><span>{{noivos.noivo}}</span></h1>
+    <p class="data-capa">{{data.extenso}}</p>
+    <p class="lugares" id="lugares" hidden></p>
+  </header>
+
+  <div class="contagem-bloco rv">
+    <p class="rotulo">Faltam</p>
+    <div class="contagem" id="contagem" role="timer" aria-label="Tempo que falta para o casamento">
+      <div><b id="c-dias">--</b><span>dias</span></div>
+      <div><b id="c-horas">--</b><span>horas</span></div>
+      <div><b id="c-min">--</b><span>min</span></div>
+      <div><b id="c-seg">--</b><span>seg</span></div>
+    </div>
+  </div>
+
+<!--sec:historia-->
+  <section class="historia centro rv">
+    <p class="rotulo">A nossa história</p>
+    <h2>{{@historiaTitulo}}</h2>
+    <p>{{historia.texto}}</p>
+  </section>
+<!--/sec-->
+
+<!--sec:pais-->
+  <section class="centro rv" style="padding-top:0">
+    <p class="rotulo">Com a bênção dos nossos pais</p>
+    <div class="pais">
+{{@pais}}
+    </div>
+  </section>
+<!--/sec-->
+</div>
+
+<div class="capulana" aria-hidden="true"></div>
+
+<div class="coluna">
+  <section class="rv">
+    <p class="rotulo">Onde</p>
+    <h2>O local</h2>
+<!--opt:local-->
+    <img class="foto-larga" src="{{img:local}}" alt="{{imagens.local.alt}}">
+<!--/opt-->
+{{@locais}}
+  </section>
+</div>
+
+<!--sec:oval-->
+<div class="faixa-oval rv">
+  <p class="rotulo" style="color:var(--ocre)">{{data.diaSemana}}</p>
+  <div class="oval-aro">
+    <svg viewBox="0 0 200 250" aria-hidden="true">
+      <ellipse cx="100" cy="125" rx="96" ry="121" fill="none" stroke="#C48A2C" stroke-width=".8" stroke-dasharray="1 4" stroke-linecap="round"/>
+      <ellipse cx="100" cy="125" rx="90" ry="115" fill="none" stroke="#C48A2C" stroke-width=".6" stroke-opacity=".6"/>
+    </svg>
+    <div class="oval">
+      <img src="{{img:oval1}}" alt="{{imagens.oval1.alt}}">
+      <img src="{{img:oval2}}" alt="{{imagens.oval2.alt}}">
+    </div>
+  </div>
+  <p>{{data.curta}}</p>
+</div>
+<!--/sec-->
+
+<div class="coluna">
+  <section class="rv">
+    <p class="rotulo">Programa do dia</p>
+    <h2>Como vai ser</h2>
+    <ol class="linha-tempo">
+{{@programa}}
+    </ol>
+  </section>
+
+<!--sec:dress-->
+  <section class="rv">
+    <p class="rotulo">Traje</p>
+    <h2>Dress code</h2>
+    <div class="dress">
+<!--opt:dress-->
+      <img src="{{img:dress}}" alt="{{imagens.dress.alt}}">
+<!--/opt-->
+      <div>
+        <p>{{dress.texto}}</p>
+        <div class="paleta" aria-label="Cores sugeridas">{{@paleta}}</div>
+      </div>
+    </div>
+  </section>
+<!--/sec-->
+</div>
+
+<div class="capulana" aria-hidden="true"></div>
+
+<div class="coluna">
+<!--sec:presentes-->
+  <section class="presentes centro rv" style="max-width:none">
+    <div class="coluna centro" style="display:grid;gap:24px;justify-items:center;width:100%">
+      <p class="rotulo">Lista de presentes</p>
+      <h2>{{presentes.titulo}}</h2>
+      <p>{{presentes.texto}}</p>
+      <div class="contas">
+{{@contas}}
+      </div>
+    </div>
+  </section>
+<!--/sec-->
+
+<!--sec:faq-->
+  <section class="centro rv">
+    <p class="rotulo">Antes de chegar</p>
+    <h2>Perguntas frequentes</h2>
+    <div class="faq">
+{{@faq}}
+    </div>
+  </section>
+<!--/sec-->
+
+  <section class="centro rv">
+<!--opt:mesa-->
+    <img class="mesa-foto" src="{{img:mesa}}" alt="{{imagens.mesa.alt}}">
+<!--/opt-->
+    <p class="rotulo">Confirme a sua presença</p>
+    <h2>Vem?</h2>
+    <p>Por favor responda até {{data.limiteRsvp}}, para podermos preparar tudo com carinho.</p>
+    <form id="rsvp" novalidate>
+      <div class="campo">
+        <label for="nome">O seu nome</label>
+        <input type="text" id="nome" autocomplete="name" placeholder="Nome e apelido" required>
+      </div>
+      <fieldset>
+        <legend>Estará presente?</legend>
+        <div class="opcoes">
+          <label><input type="radio" name="vai" value="sim" checked> Sim, lá estarei</label>
+          <label><input type="radio" name="vai" value="nao"> Não poderei ir</label>
+        </div>
+      </fieldset>
+      <div class="campo" id="campo-pessoas">
+        <label for="pessoas" id="rot-pessoas">Quantas pessoas (incluindo você)?</label>
+        <input type="number" id="pessoas" min="1" max="6" value="1" inputmode="numeric">
+      </div>
+      <div class="campo">
+        <label for="alim">Restrições alimentares (opcional)</label>
+        <input type="text" id="alim" placeholder="Alergias, vegetariano, etc.">
+      </div>
+      <div class="campo">
+        <label for="msg">Mensagem para os noivos (opcional)</label>
+        <textarea id="msg" rows="3" placeholder="Uma palavra de carinho..."></textarea>
+      </div>
+      <button class="btn cheio" type="submit">Preparar confirmação</button>
+      <div class="resposta" id="resposta" hidden>
+        <p id="resposta-texto"></p>
+        <a class="btn cheio" id="resposta-link" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+      </div>
+    </form>
+  </section>
+
+  <footer>
+    <span class="assinatura">{{noivos.noiva}} &amp; {{noivos.noivo}}</span>
+    <p>{{data.ponto}} · {{cidade}}</p>
+    <p>Dúvidas? <a href="https://wa.me/{{whatsapp.numero}}" target="_blank" rel="noopener">Fale connosco no WhatsApp</a></p>
+  </footer>
+</div>
+<div class="capulana" aria-hidden="true"></div>

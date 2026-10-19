@@ -1,0 +1,100 @@
+/* Conceito: envelope que abre para um convite em coluna única, com fotografias
+   em arco e em oval e faixas de capulana entre os momentos do dia.
+   Look único e deliberado (oceano Índico + ocre), por isso sem tema escuro. */
+:root {
+  --papel: #F4F6F3;
+  --papel-2: #E8EEEA;
+  --tinta: #0D2B33;
+  --tinta-suave: #3E5B62;
+  --primaria: #1F6F78;
+  --primaria-escura: #164F57;
+  --destaque: #C48A2C;
+  --destaque-claro: #E3B867;
+  --linha: #C9D5D0;
+  --f-display: "Italiana", "Didot", Georgia, serif;
+  --f-script: "Pinyon Script", "Snell Roundhand", cursive;
+  --f-corpo: "Jost", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+/* ---------- faixa de capulana ---------- */
+.capulana {
+  height: 28px; margin-inline: calc(50% - 50vw); background-color: var(--tinta);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28' viewBox='0 0 56 28'%3E%3Cpath d='M14 3 25 14 14 25 3 14Z' fill='none' stroke='%23C48A2C' stroke-width='1.5'/%3E%3Ccircle cx='14' cy='14' r='2.5' fill='%23C48A2C'/%3E%3Cpath d='M42 3 53 14 42 25 31 14Z' fill='%231F6F78'/%3E%3Cpath d='M28 0v28' stroke='%23C48A2C' stroke-opacity='.35'/%3E%3C/svg%3E");
+  background-size: 56px 28px;
+}
+
+/* ---------- capa ---------- */
+.capa { text-align: center; padding-block: 56px 64px; display: grid; gap: 20px; justify-items: center; }
+.saudacao { font-size: clamp(32px, 9vw, 44px); line-height: 1.1; }
+.arco {
+  position: relative; width: min(74vw, 320px); aspect-ratio: 3 / 4; margin-block: 8px 12px;
+  border-radius: 999px 999px 0 0; overflow: hidden;
+}
+.arco::after { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(255, 255, 255, .75); border-radius: 999px 999px 0 0; pointer-events: none; }
+.arco img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.nomes { font-size: clamp(54px, 15vw, 100px); line-height: 1; display: grid; justify-items: center; }
+.nomes .e { font-family: var(--f-script); font-size: .62em; color: var(--destaque); line-height: .9; margin-block: -.04em; }
+.convite-texto { color: var(--tinta-suave); max-width: 34ch; }
+.data-capa { font-family: var(--f-display); font-size: clamp(22px, 5.5vw, 30px); letter-spacing: .12em; }
+.lugares { display: inline-block; border: 1px solid var(--destaque); color: var(--tinta); padding: 6px 16px; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; font-weight: 400; }
+
+
+.historia p { max-width: 54ch; }
+.pais { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; max-width: 480px; }
+.pais div { display: grid; gap: 4px; }
+.pais h3 { font-size: 13px; letter-spacing: .22em; text-transform: uppercase; font-family: var(--f-corpo); font-weight: 500; color: var(--primaria); }
+
+/* ---------- local ---------- */
+
+/* ---------- programa ---------- */
+.linha-tempo { list-style: none; margin: 0; padding: 0; display: grid; }
+.linha-tempo li { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding-bottom: 28px; position: relative; }
+.linha-tempo li:last-child { padding-bottom: 0; }
+.linha-tempo li:not(:last-child)::before { content: ""; position: absolute; left: 27px; top: 56px; bottom: 4px; border-left: 2px dashed var(--destaque); opacity: .6; }
+.icone { width: 56px; height: 56px; border: 1px solid var(--destaque); border-radius: 50%; display: grid; place-items: center; background: var(--papel); }
+.icone svg { width: 26px; height: 26px; fill: none; stroke: var(--primaria); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.linha-tempo time { font-family: var(--f-display); font-size: 26px; color: var(--destaque); line-height: 1.2; font-variant-numeric: tabular-nums; }
+.linha-tempo strong { font-weight: 500; display: block; }
+.linha-tempo span.d { color: var(--tinta-suave); }
+
+/* ---------- dress code ---------- */
+.dress { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+.dress img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 999px 999px 0 0; }
+.paleta { display: flex; gap: 10px; margin-top: 10px; }
+.paleta i { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--linha); display: block; }
+
+/* ---------- presentes ---------- */
+.presentes { background: var(--tinta); color: var(--papel); margin-inline: calc(50% - 50vw); padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+.presentes .rotulo { color: var(--destaque); }
+.presentes p { color: #C5D4D3; max-width: 52ch; }
+.contas { display: grid; gap: 12px; width: 100%; text-align: left; }
+.conta { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; border: 1px solid #335962; padding: 14px 16px; }
+.conta div { min-width: 0; }
+.conta small { display: block; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--destaque); }
+.conta code { font: 400 16px var(--f-corpo); overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.conta button { background: transparent; color: var(--papel); border: 1px solid #5B808A; padding: 9px 14px; font: 400 13px var(--f-corpo); cursor: pointer; }
+.conta button:hover { background: var(--papel); color: var(--tinta); }
+
+/* ---------- perguntas ---------- */
+.faq { width: 100%; text-align: left; }
+.faq details { border-top: 1px solid var(--linha); }
+.faq details:last-child { border-bottom: 1px solid var(--linha); }
+.faq summary { cursor: pointer; padding: 18px 28px 18px 0; font-weight: 400; list-style: none; position: relative; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; font: 300 26px var(--f-corpo); color: var(--destaque); }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { padding: 0 0 18px; color: var(--tinta-suave); max-width: 56ch; }
+
+/* ---------- rsvp ---------- */
+.mesa-foto { width: min(100%, 420px); aspect-ratio: 3 / 2; object-fit: cover; }
+
+@media (max-width: 480px) {
+  .pais, .dress { grid-template-columns: 1fr; }
+  .dress img { max-width: 260px; justify-self: center; }
+  .conta { grid-template-columns: 1fr; }
+  .conta button { justify-self: start; }
+  .linha-tempo li { grid-template-columns: 48px 1fr; gap: 16px; }
+  .icone { width: 48px; height: 48px; }
+  .linha-tempo li:not(:last-child)::before { left: 23px; top: 48px; }
+}

@@ -1,0 +1,184 @@
+<!-- Envelope de abertura -->
+<div class="env-fundo" id="envelope">
+  <button class="env-btn" id="abrir" type="button" aria-label="Abrir o convite">
+    <div class="env">
+      <div class="env-corpo"></div>
+      <div class="env-carta"></div>
+      <div class="env-aba"></div>
+      <div class="selo" aria-hidden="true">{{noivos.iniciais}}</div>
+      <p class="env-para" id="env-para">{{noivos.noiva}} &amp; {{noivos.noivo}}</p>
+    </div>
+  </button>
+  <p class="env-dica">Toque para abrir</p>
+</div>
+
+<!-- Desenhos reutilizados no cartão: folhagem em aguarela e coroa de louro -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="folha-forma" d="M0 0C18-26 62-30 96 0 62 30 18 26 0 0Z"/>
+    <g id="folha">
+      <use href="#folha-forma"/>
+      <path d="M4 0H88" fill="none" stroke="#EEF5E8" stroke-opacity=".55" stroke-width="1.2"/>
+    </g>
+    <symbol id="folhagem" viewBox="0 0 240 220">
+      <use href="#folha" transform="translate(0 0) rotate(48) scale(2.1)" fill="#9DC08A" fill-opacity=".5"/>
+      <use href="#folha" transform="translate(14 8) rotate(32) scale(1.55)" fill="#5F8F58" fill-opacity=".9"/>
+      <use href="#folha" transform="translate(0 46) rotate(72) scale(1.35)" fill="#3F6E45" fill-opacity=".88"/>
+      <use href="#folha" transform="translate(26 0) rotate(10) scale(1.2)" fill="#7FAE6E" fill-opacity=".85"/>
+      <use href="#folha" transform="translate(40 24) rotate(24) scale(.95)" fill="#2F5B3A" fill-opacity=".9"/>
+      <use href="#folha" transform="translate(0 96) rotate(86) scale(.95)" fill="#6E9E62" fill-opacity=".82"/>
+      <use href="#folha" transform="translate(84 4) rotate(4) scale(.75)" fill="#88B476" fill-opacity=".8"/>
+      <use href="#folha" transform="translate(2 150) rotate(92) scale(.6)" fill="#4D7E4F" fill-opacity=".8"/>
+    </symbol>
+    <path id="f-coroa" d="M60 12c-6 7-6 17 0 25 6-8 6-18 0-25z"/>
+    <symbol id="coroa" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="44" fill="none" stroke="#B5933F" stroke-width="1.6"/>
+      <g fill="#5F8F58" fill-opacity=".9">
+        <use href="#f-coroa"/>
+        <use href="#f-coroa" transform="rotate(30 60 60)"/>
+        <use href="#f-coroa" transform="rotate(60 60 60)"/>
+        <use href="#f-coroa" transform="rotate(90 60 60)"/>
+        <use href="#f-coroa" transform="rotate(120 60 60)"/>
+        <use href="#f-coroa" transform="rotate(150 60 60)"/>
+        <use href="#f-coroa" transform="rotate(180 60 60)" fill="#3F6E45"/>
+        <use href="#f-coroa" transform="rotate(210 60 60)" fill="#3F6E45"/>
+        <use href="#f-coroa" transform="rotate(240 60 60)" fill="#3F6E45"/>
+        <use href="#f-coroa" transform="rotate(270 60 60)" fill="#3F6E45"/>
+        <use href="#f-coroa" transform="rotate(300 60 60)" fill="#3F6E45"/>
+        <use href="#f-coroa" transform="rotate(330 60 60)" fill="#3F6E45"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="coluna cartao-pagina">
+  <article class="cartao" data-entrada>
+    <div class="folhas tl" aria-hidden="true"><svg><use href="#folhagem"/></svg></div>
+    <div class="folhas br" aria-hidden="true"><svg><use href="#folhagem"/></svg></div>
+
+    <div class="coroa" role="img" aria-label="Monograma {{noivos.iniciais}}">
+      <svg viewBox="0 0 120 120"><use href="#coroa"/><text x="60" y="73" text-anchor="middle" font-size="34">{{noivos.iniciais}}</text></svg>
+    </div>
+
+    <p class="saudacao" id="saudacao">Querido convidado,</p>
+
+<!--sec:versiculo-->
+    <p class="versiculo">“{{textos.versiculo}}”<small>{{textos.versiculoRef}}</small></p>
+<!--/sec-->
+
+    <p class="bencao">{{textos.bencao}}</p>
+    <div class="pais">
+{{@pais}}
+    </div>
+
+    <h1 class="nomes-linha"><span>{{noivos.noiva}}</span><span class="e">&amp;</span><span>{{noivos.noivo}}</span></h1>
+
+    <p class="convidam">{{textos.convidam}}</p>
+    <hr class="regua">
+
+    <div class="data-bloco" aria-label="{{data.extenso}}">
+      <span class="mes">{{data.mes}}</span>
+      <span class="meio"><span>{{data.diaSemanaCurto}}</span><b>{{data.dia}}</b></span>
+      <span class="ano">{{data.ano}}</span>
+    </div>
+
+    <div class="programa-linhas">
+{{@programaLinhas}}
+    </div>
+
+    <p class="mesa" id="mesa" hidden>Mesa <b></b></p>
+    <p class="lugares" id="lugares" hidden></p>
+
+    <p class="nota pequena">Localização: {{textos.localizacao}}</p>
+    <p class="nota pequena">Confirme a sua presença até {{data.limiteRsvp}} · <a href="tel:+{{whatsapp.numero}}">{{whatsapp.numeroVisivel}}</a></p>
+  </article>
+
+</div>
+
+<!--sec:oval-->
+<div class="faixa-oval rv" style="margin-top:56px">
+  <p class="rotulo" style="color:var(--destaque)">{{data.diaSemana}}</p>
+  <div class="oval-aro">
+    <svg viewBox="0 0 200 250" aria-hidden="true">
+      <ellipse cx="100" cy="125" rx="96" ry="121" fill="none" stroke="#B5933F" stroke-width=".8" stroke-dasharray="1 4" stroke-linecap="round"/>
+      <ellipse cx="100" cy="125" rx="90" ry="115" fill="none" stroke="#B5933F" stroke-width=".6" stroke-opacity=".6"/>
+    </svg>
+    <div class="oval">
+      <img src="{{img:oval1}}" alt="{{imagens.oval1.alt}}">
+      <img src="{{img:oval2}}" alt="{{imagens.oval2.alt}}">
+    </div>
+  </div>
+  <p>{{data.curta}}</p>
+</div>
+<!--/sec-->
+<div class="coluna">
+  <div class="contagem-bloco rv" style="padding-top:56px">
+    <p class="rotulo">Faltam</p>
+    <div class="contagem" id="contagem" role="timer" aria-label="Tempo que falta para o casamento">
+      <div><b id="c-dias">--</b><span>dias</span></div>
+      <div><b id="c-horas">--</b><span>horas</span></div>
+      <div><b id="c-min">--</b><span>min</span></div>
+      <div><b id="c-seg">--</b><span>seg</span></div>
+    </div>
+  </div>
+
+<!--sec:historia-->
+  <section class="historia centro rv">
+    <p class="rotulo">A nossa história</p>
+    <h2>{{@historiaTitulo}}</h2>
+    <p>{{historia.texto}}</p>
+  </section>
+<!--/sec-->
+
+  <section class="rv" style="padding-top:16px">
+    <p class="rotulo">Como chegar</p>
+    <div class="locais">
+{{@locais}}
+    </div>
+  </section>
+
+  <section class="centro rv">
+<!--opt:mesa-->
+    <img class="mesa-foto" src="{{img:mesa}}" alt="{{imagens.mesa.alt}}">
+<!--/opt-->
+    <p class="rotulo">Confirme a sua presença</p>
+    <h2>Vem?</h2>
+    <p>Por favor responda até {{data.limiteRsvp}}, para podermos preparar tudo com carinho.</p>
+    <form id="rsvp" novalidate>
+      <div class="campo">
+        <label for="nome">O seu nome</label>
+        <input type="text" id="nome" autocomplete="name" placeholder="Nome e apelido" required>
+      </div>
+      <fieldset>
+        <legend>Estará presente?</legend>
+        <div class="opcoes">
+          <label><input type="radio" name="vai" value="sim" checked> Sim, lá estarei</label>
+          <label><input type="radio" name="vai" value="nao"> Não poderei ir</label>
+        </div>
+      </fieldset>
+      <div class="campo" id="campo-pessoas">
+        <label for="pessoas" id="rot-pessoas">Quantas pessoas (incluindo você)?</label>
+        <input type="number" id="pessoas" min="1" max="6" value="1" inputmode="numeric">
+      </div>
+      <div class="campo">
+        <label for="alim">Restrições alimentares (opcional)</label>
+        <input type="text" id="alim" placeholder="Alergias, vegetariano, etc.">
+      </div>
+      <div class="campo">
+        <label for="msg">Mensagem para os noivos (opcional)</label>
+        <textarea id="msg" rows="3" placeholder="Uma palavra de carinho..."></textarea>
+      </div>
+      <button class="btn cheio" type="submit">Preparar confirmação</button>
+      <div class="resposta" id="resposta" hidden>
+        <p id="resposta-texto"></p>
+        <a class="btn cheio" id="resposta-link" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+      </div>
+    </form>
+  </section>
+
+  <footer>
+    <span class="assinatura">{{noivos.noiva}} &amp; {{noivos.noivo}}</span>
+    <p>{{data.ponto}} · {{cidade}}</p>
+    <p>Dúvidas? <a href="https://wa.me/{{whatsapp.numero}}" target="_blank" rel="noopener">Fale connosco no WhatsApp</a> ou ligue para {{whatsapp.numeroVisivel}}.</p>
+  </footer>
+</div>

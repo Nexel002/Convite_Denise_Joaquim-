@@ -1,0 +1,118 @@
+/* Base comum a todos os modelos: reset, tipografia, botões, formulário de confirmação, rodapé.
+   Usa as variáveis do tema definidas em cada modelo (:root em estilos.css). */
+* { box-sizing: border-box; }
+body {
+  background: var(--papel); color: var(--tinta);
+  font-family: var(--f-corpo); font-size: 17px; line-height: 1.65; font-weight: 300;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.coluna { max-width: 640px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 400; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+img { display: block; max-width: 100%; }
+a { color: var(--primaria); }
+:focus-visible { outline: 2px solid var(--destaque); outline-offset: 3px; }
+.rotulo { font-size: 12px; letter-spacing: .28em; text-transform: uppercase; font-weight: 500; color: var(--primaria); }
+.script { font-family: var(--f-script); color: var(--destaque); font-weight: 400; }
+
+/* ---------- contagem ---------- */
+.contagem-bloco { text-align: center; display: grid; gap: 18px; justify-items: center; padding-block: 8px 72px; }
+.contagem { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; max-width: 420px; width: 100%; }
+.contagem div { border-top: 1px solid var(--destaque); padding-top: 10px; }
+.contagem b { display: block; font-family: var(--f-display); font-weight: 400; font-size: clamp(32px, 9vw, 46px); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.contagem span { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--tinta-suave); }
+
+/* ---------- secções ---------- */
+section { padding-block: 72px; display: grid; gap: 24px; }
+section h2 { font-size: clamp(34px, 8vw, 48px); line-height: 1.1; }
+.centro { text-align: center; justify-items: center; }
+
+.local-cartao { background: var(--papel-2); padding: 28px; display: grid; gap: 14px; }
+.local-cartao h3 { font-size: 28px; }
+.botoes { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-block; font: 500 14px/1 var(--f-corpo); letter-spacing: .12em; text-transform: uppercase;
+  padding: 15px 22px; border: 1px solid var(--tinta); background: transparent; color: var(--tinta);
+  text-decoration: none; cursor: pointer;
+}
+.btn:hover { background: var(--tinta); color: var(--papel); }
+.btn.cheio { background: var(--tinta); color: var(--papel); }
+.btn.cheio:hover { background: var(--primaria); border-color: var(--primaria); }
+
+form { display: grid; gap: 18px; text-align: left; width: 100%; }
+label, legend { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 500; color: var(--tinta-suave); }
+fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
+input[type=text], input[type=number], textarea { width: 100%; font: 400 17px var(--f-corpo); color: var(--tinta); background: #fff; border: 1px solid var(--linha); padding: 13px 14px; border-radius: 0; }
+input:focus, textarea:focus { border-color: var(--primaria); }
+.opcoes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.opcoes label { text-transform: none; letter-spacing: 0; font-size: 16px; font-weight: 400; color: var(--tinta); display: flex; gap: 10px; align-items: center; border: 1px solid var(--linha); padding: 13px 14px; background: #fff; cursor: pointer; }
+.opcoes input { accent-color: var(--primaria); }
+.campo { display: grid; gap: 8px; }
+.campo[hidden] { display: none; }
+.resposta { padding: 18px; background: var(--papel-2); display: grid; gap: 12px; }
+.resposta[hidden] { display: none; }
+
+footer { text-align: center; padding-block: 48px 64px; color: var(--tinta-suave); display: grid; gap: 8px; justify-items: center; }
+footer .assinatura { font-family: var(--f-script); font-size: 44px; color: var(--destaque); line-height: 1; }
+
+@media (max-width: 480px) {
+  .opcoes { grid-template-columns: 1fr; }
+}
+
+/* ---------- faixa da oval ---------- */
+.faixa-oval { background: var(--tinta); color: var(--papel); margin-inline: calc(50% - 50vw); padding: 64px max(16px, env(safe-area-inset-left, 0px)); display: grid; justify-items: center; gap: 28px; text-align: center; }
+.oval-aro { position: relative; width: min(72vw, 300px); aspect-ratio: 4 / 5; display: grid; place-items: center; }
+.oval-aro svg { position: absolute; inset: -14%; width: 128%; height: 128%; max-width: none; overflow: visible; }
+.oval { position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; }
+.oval img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+.oval img:first-child { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .oval img { animation: trocar 9s ease-in-out infinite, zoom 9s ease-out infinite; }
+  .oval img:nth-child(2) { animation-delay: 4.5s; }
+  .oval img:first-child { animation-delay: 0s; }
+  @keyframes trocar { 0%, 100% { opacity: 0; } 8%, 50% { opacity: 1; } 58% { opacity: 0; } }
+}
+.faixa-oval p { font-family: var(--f-display); font-size: 22px; letter-spacing: .14em; color: var(--destaque-claro); }
+
+.foto-larga { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+
+/* ---------- animações ----------
+   Tudo isto só se aplica com a classe .anim no <html>, que o JS põe se o browser suporta
+   IntersectionObserver e o utilizador não pediu menos movimento. Sem ela (ou sem JS) o
+   convite aparece inteiro, sem esperar por nada. */
+.btn, .conta button { transition: background .25s ease, color .25s ease, border-color .25s ease; }
+
+/* aparecer ao rolar: cada secção (.rv) revela os filhos em cascata */
+.anim .rv > * { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s cubic-bezier(.2, .7, .2, 1); }
+.anim .rv.vis > * { opacity: 1; transform: none; }
+.anim .rv.vis > :nth-child(2) { transition-delay: .12s; }
+.anim .rv.vis > :nth-child(3) { transition-delay: .24s; }
+.anim .rv.vis > :nth-child(4) { transition-delay: .36s; }
+.anim .rv.vis > :nth-child(5) { transition-delay: .48s; }
+.anim .rv.vis > :nth-child(n+6) { transition-delay: .6s; }
+
+/* listas dentro das secções: um item de cada vez */
+.anim .rv :is(.contas > *, .faq details, .linha-tempo li, .locais > *, .contagem > div, .paleta i) {
+  opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s cubic-bezier(.2, .7, .2, 1);
+}
+.anim .rv.vis :is(.contas > *, .faq details, .linha-tempo li, .locais > *, .contagem > div, .paleta i) { opacity: 1; transform: none; }
+.anim .rv.vis :is(.contas > *, .faq details, .linha-tempo li, .locais > *, .contagem > div, .paleta i):nth-child(1) { transition-delay: .3s; }
+.anim .rv.vis :is(.contas > *, .faq details, .linha-tempo li, .locais > *, .contagem > div, .paleta i):nth-child(2) { transition-delay: .45s; }
+.anim .rv.vis :is(.contas > *, .faq details, .linha-tempo li, .locais > *, .contagem > div, .paleta i):nth-child(3) { transition-delay: .6s; }
+.anim .rv.vis :is(.contas > *, .faq details, .linha-tempo li, .locais > *, .contagem > div, .paleta i):nth-child(4) { transition-delay: .75s; }
+.anim .rv.vis :is(.contas > *, .faq details, .linha-tempo li, .locais > *, .contagem > div, .paleta i):nth-child(n+5) { transition-delay: .9s; }
+
+/* fotografias: descem como uma cortina ao entrar no ecrã e depois respiram devagar */
+.anim .rv .foto-larga, .anim .rv .mesa-foto { clip-path: inset(0 0 100% 0); transform: scale(1.08); transition: clip-path 1.3s cubic-bezier(.6, 0, .2, 1) .2s, transform 1.8s ease .2s; }
+.anim .rv.vis .foto-larga, .anim .rv.vis .mesa-foto { clip-path: inset(0); transform: none; }
+@keyframes zoom { from { transform: scale(1); } to { transform: scale(1.1); } }
+
+/* entrada do cartão ou da capa, depois de o envelope abrir (JS põe --i em cada filho e .revelado no body) */
+.anim [data-entrada] > :not(.folhas) { opacity: 0; }
+.revelado [data-entrada] > :not(.folhas) { animation: surgir 1s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i, 0) * .14s + .15s); }
+@keyframes surgir { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* segundos da contagem: cada tique entra de cima */
+@keyframes tique { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+.tique { animation: tique .45s ease both; }
