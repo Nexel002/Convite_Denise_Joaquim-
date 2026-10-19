@@ -1,0 +1,11 @@
+# Resultado da construção: gera-se com `npm run construir`
+dist/
+
+# Dados privados de convidados (nomes e telemóveis). Nunca publicar.
+saida/
+convites/*/convidados.csv
+
+node_modules/
+.vercel/
+
+public/

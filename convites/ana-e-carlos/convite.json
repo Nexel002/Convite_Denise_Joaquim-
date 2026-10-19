@@ -1,0 +1,87 @@
+{
+  "modelo": "casamento",
+  "titulo": "Convite Ana e Carlos",
+  "cidade": "Maputo",
+
+  "noivos": { "noiva": "Ana", "noivo": "Carlos", "iniciais": "A&C" },
+
+  "data": {
+    "iso": "2027-06-12T16:00:00+02:00",
+    "diaSemana": "Sábado",
+    "extenso": "Sábado, 12 de Junho de 2027",
+    "curta": "12 · 06 · 2027",
+    "ponto": "12.06.2027",
+    "limiteRsvp": "12 de Maio de 2027"
+  },
+
+  "whatsapp": {
+    "numero": "258852074332",
+    "mensagemSim": "Olá! Sou {nome} e confirmo presença no casamento da Ana e do Carlos ({pessoas}).",
+    "mensagemNao": "Olá! Sou {nome} e infelizmente não poderei ir ao casamento da Ana e do Carlos.",
+    "mensagemConvite": "Olá, {nome}! Temos a alegria de convidar você para o nosso casamento. Abra o seu convite aqui: {link}"
+  },
+
+  "textos": {
+    "convite": "Com a alegria de quem ama, convidamos você para celebrar connosco o início da nossa vida a dois."
+  },
+
+  "historia": {
+    "titulo": ["Começou com um café", "e nunca mais acabou"],
+    "texto": "Conhecemo-nos em 2019, numa esplanada da Polana, numa tarde em que nenhum dos dois devia lá estar. Seis anos depois, o Carlos pediu a mão da Ana à beira-mar, na Costa do Sol. Ela disse sim antes de ele acabar a frase. Queremos que estejam ao nosso lado neste dia."
+  },
+
+  "pais": [
+    { "titulo": "Pais da noiva", "nomes": ["Maria Silva", "José Silva"] },
+    { "titulo": "Pais do noivo", "nomes": ["Rosa Macamo", "António Macamo"] }
+  ],
+
+  "locais": [
+    {
+      "nome": "Jardim Vila Índico",
+      "morada": ["Av. Marginal, 1234, Costa do Sol", "Maputo"],
+      "mapa": "https://www.google.com/maps/search/?api=1&query=Costa+do+Sol+Maputo",
+      "waze": "https://waze.com/ul?q=Costa%20do%20Sol%20Maputo"
+    }
+  ],
+
+  "programa": [
+    { "hora": "16:00", "icone": "igreja", "titulo": "Cerimónia", "descricao": "No jardim, ao pôr do sol. Pedimos que cheguem às 15:30." },
+    { "hora": "17:30", "icone": "camara", "titulo": "Fotografias", "descricao": "Com os noivos e as famílias." },
+    { "hora": "18:00", "icone": "tacas", "titulo": "Cocktail", "descricao": "Sumo de tamarindo, bebidas e música ao vivo." },
+    { "hora": "19:00", "icone": "talheres", "titulo": "Jantar", "descricao": "Mariscos, matapa e cabrito, à moda da casa." },
+    { "hora": "21:30", "icone": "musica", "titulo": "Primeira dança e festa", "descricao": "Marrabenta até ao fim da noite." }
+  ],
+
+  "dress": {
+    "texto": "Fato ou vestido de cerimónia. Convidamos a usar capulana ou um toque de azul, verde ou dourado.",
+    "cores": ["#1F6F78", "#0D2B33", "#C48A2C", "#F4F6F3"]
+  },
+
+  "presentes": {
+    "titulo": "A sua presença é o melhor presente",
+    "texto": "Se quiser mesmo oferecer algo, uma contribuição ajuda-nos a começar a casa nova.",
+    "contas": [
+      { "rotulo": "M-Pesa", "texto": "84 000 0000", "copiar": "840000000" },
+      { "rotulo": "e-Mola", "texto": "86 000 0000", "copiar": "860000000" },
+      { "rotulo": "NIB · Ana Silva", "texto": "0000 0000 0000 0000 0000 0", "copiar": "0000000000000000000000" }
+    ]
+  },
+
+  "faq": [
+    { "pergunta": "Posso levar crianças?", "resposta": "São muito bem-vindas. Haverá um espaço com animação até às 21h." },
+    { "pergunta": "Há estacionamento?", "resposta": "Sim, parque gratuito dentro do recinto, com vigilância durante toda a festa." },
+    { "pergunta": "Posso levar mais alguém?", "resposta": "Pedimos que venham só as pessoas indicadas no seu convite. O número de lugares está no topo da página." },
+    { "pergunta": "E se chover?", "resposta": "A cerimónia passa para o salão coberto, sem alterar o horário." }
+  ],
+
+  "seccoes": { "historia": true, "pais": true, "oval": true, "dress": true, "presentes": true, "faq": true },
+
+  "imagens": {
+    "capa":  { "ficheiro": "praia.jpg",    "alt": "Os noivos abraçados na praia" },
+    "local": { "ficheiro": "corredor.jpg", "alt": "Corredor de cadeiras e arranjos de flores no jardim da cerimónia" },
+    "oval1": { "ficheiro": "confete.jpg",  "alt": "Os noivos a beijar-se debaixo de pétalas" },
+    "oval2": { "ficheiro": "palmeira.jpg", "alt": "Os noivos a rir debaixo de uma palmeira" },
+    "dress": { "ficheiro": "maos.jpg",     "alt": "Mãos dos noivos com alianças e um ramo de flores" },
+    "mesa":  { "ficheiro": "mesa.jpg",     "alt": "Mesa posta para o jantar, com flores e guardanapos azuis" }
+  }
+}

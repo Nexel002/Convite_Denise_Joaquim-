@@ -1,0 +1,9 @@
+{
+  "framework": null,
+  "installCommand": "echo sem dependencias",
+  "buildCommand": "node scripts/construir.mjs --saida public",
+  "outputDirectory": "public",
+  "headers": [
+    { "source": "/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }] }
+  ]
+}

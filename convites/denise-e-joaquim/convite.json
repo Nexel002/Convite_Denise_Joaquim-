@@ -1,0 +1,75 @@
+{
+  "modelo": "casamento-folhagem",
+  "titulo": "Convite Denise e Joaquim",
+  "cidade": "Matola",
+
+  "noivos": { "noiva": "Denise", "noivo": "Joaquim", "iniciais": "D&J" },
+
+  "data": {
+    "iso": "2026-12-05T10:00:00+02:00",
+    "diaSemana": "Sábado",
+    "extenso": "Sábado, 5 de Dezembro de 2026",
+    "mes": "DEZ",
+    "diaSemanaCurto": "SAB",
+    "dia": "05",
+    "ano": "2026",
+    "curta": "05 · 12 · 2026",
+    "ponto": "05.12.2026",
+    "limiteRsvp": "07/11/2026"
+  },
+
+  "whatsapp": {
+    "numero": "258871297123",
+    "numeroVisivel": "+258 871297123",
+    "mensagemSim": "Olá! Sou {nome} e confirmo presença no casamento da Denise e do Joaquim ({pessoas}).",
+    "mensagemNao": "Olá! Sou {nome} e infelizmente não poderei ir ao casamento da Denise e do Joaquim.",
+    "mensagemConvite": "Olá, {nome}! A Denise e o Joaquim têm a alegria de convidar você para o seu casamento. Abra o seu convite aqui: {link}"
+  },
+
+  "textos": {
+    "convite": "Denise e Joaquim convidam para a sua cerimónia de casamento.",
+    "versiculo": "Para que todos vejam, saibam, considerem e compreendam que a mão do Senhor realizou isso…",
+    "versiculoRef": "Isaías 41:20",
+    "bencao": "Com a bênção de Deus e dos seus pais:",
+    "convidam": "Convidam para a sua cerimónia de casamento:",
+    "localizacao": "Estrada da Mozal, Novo Terminal de Zilinga - Quinta Melucha"
+  },
+
+  "pais": [
+    { "nomes": [{ "nome": "Amadeu Generoso", "memoria": true }, { "nome": "Especiosa Mingana", "memoria": true }] },
+    { "nomes": [{ "nome": "Joaquim Mutimba", "memoria": true }, "Célia Fumo"] }
+  ],
+
+  "locais": [
+    {
+      "rotulo": "Cerimónia religiosa",
+      "nome": "Igreja Presbiteriana de Moçambique",
+      "morada": ["Paróquia da Matola"],
+      "mapa": "https://maps.app.goo.gl/DYnbfXixAQiv3e7R7",
+      "imagem": "corredor"
+    },
+    {
+      "rotulo": "Cerimónia civil e almoço",
+      "nome": "Quinta Melucha",
+      "morada": ["Estrada da Mozal, Novo Terminal de Zilinga"],
+      "mapa": "https://maps.app.goo.gl/6WvfaEAKmbUWf8247",
+      "imagem": "mesa"
+    }
+  ],
+
+  "programa": [
+    { "hora": "10:00", "icone": "igreja", "titulo": "Igreja Presbiteriana de Moçambique", "descricao": "Paróquia da Matola" },
+    { "hora": "14h30", "icone": "aliancas", "titulo": "Cerimónia Civil", "descricao": "" },
+    { "hora": "15:00", "icone": "talheres", "titulo": "Almoço", "descricao": "" }
+  ],
+
+  "seccoes": { "historia": false, "versiculo": true, "oval": true },
+
+  "imagens": {
+    "capa":     { "ficheiro": "praia.jpg",    "alt": "Os noivos abraçados na praia" },
+    "oval1":    { "ficheiro": "confete.jpg",  "alt": "Os noivos a beijar-se debaixo de pétalas" },
+    "oval2":    { "ficheiro": "palmeira.jpg", "alt": "Os noivos a rir debaixo de uma palmeira" },
+    "corredor": { "ficheiro": "corredor.jpg", "alt": "Corredor de cadeiras e arranjos de flores na cerimónia" },
+    "mesa":     { "ficheiro": "mesa.jpg",     "alt": "Mesa posta para o almoço, com flores e guardanapos azuis" }
+  }
+}

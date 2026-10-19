@@ -1,0 +1,13 @@
+{
+  "name": "convites-digitais",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Convites digitais em página estática: um modelo por tipo de evento, um convite.json por convite.",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "construir": "node scripts/construir.mjs",
+    "construir:todos": "node scripts/construir.mjs --todos",
+    "links": "node scripts/gerar-links.mjs"
+  }
+}
