@@ -86,16 +86,18 @@ A página não tem servidor. A confirmação abre o WhatsApp dos noivos com a me
 
 ## Publicar na Vercel
 
-Publica-se **a pasta `dist/<slug>/`**, não a raiz do projecto.
+O repositório tem um `vercel.json` que diz à Vercel como construir. **Cada convite é um projecto Vercel separado**, ligado ao mesmo repositório e escolhido pela variável de ambiente `CONVITE`.
 
-```bash
-node scripts/construir.mjs ana-e-carlos --url https://anaecarlos.vercel.app/
-cd dist/ana-e-carlos
-npx vercel --prod
-```
+1. Na Vercel: **Add New → Project**, importar o repositório do GitHub.
+2. **Project Name:** minúsculas, com letras, números, `.`, `_` ou `-` (por exemplo `denise-e-joaquim`). É ele que define o endereço `https://<nome>.vercel.app`.
+3. **Environment Variables:** `CONVITE` = nome da pasta em `convites/` (por exemplo `denise-e-joaquim`). Sem ela a construção falha e diz porquê.
+4. O resto vem do `vercel.json` (sem framework, sem dependências, comando `node scripts/construir.mjs --saida public`, pasta `public`). Deploy.
 
-O nome do projecto na Vercel define o endereço. Escolhe-o antes e usa o mesmo no `--url`, senão a foto não aparece na pré-visualização do WhatsApp. Cada convite é um projecto Vercel separado.
+A Vercel dá ao script o endereço do projecto (`VERCEL_PROJECT_PRODUCTION_URL`), por isso a foto de pré-visualização do WhatsApp fica certa sem mais nada. Cada `git push` para a branch de produção volta a publicar.
 
+Publicação sem GitHub, a partir do terminal: `node scripts/construir.mjs <slug> --url https://<nome>.vercel.app/`, depois `cd dist/<slug>` e `npx vercel --prod`.
+
+`--saida <pasta>` escreve numa subpasta do projecto em vez de `dist/<slug>/`. O script apaga essa pasta antes de escrever, por isso recusa a raiz e pastas fora do projecto.
 ## Privacidade
 
 - `convidados.csv`, `saida/` e `dist/` estão no `.gitignore`. A lista de convidados nunca deve ir para o `dist/` nem para um repositório.

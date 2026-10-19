@@ -9,7 +9,7 @@
 //                (o og:image tem de ser um endereço absoluto).
 //   --autonomo   mete as imagens dentro do HTML (base64), para um único ficheiro que abre com duplo clique.
 import { readFileSync, writeFileSync, mkdirSync, copyFileSync, existsSync, readdirSync, rmSync } from "node:fs";
-import { dirname, join, resolve, extname } from "node:path";
+import { dirname, join, resolve, extname, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -41,7 +41,10 @@ function construir(slug) {
   const doModelo = (nome) => (existsSync(join(pastaModelo, nome)) ? join(pastaModelo, nome) : join(comum, nome));
   const icones = lerJson(doModelo("icones.json"));
   const definicao = lerJson(join(pastaModelo, "modelo.json"));
-  const urlBase = valorDe("--url") ? valorDe("--url").replace(/\/?$/, "/") : "";
+  // Na Vercel o endereço público do projecto vem em VERCEL_PROJECT_PRODUCTION_URL (sem https://),
+  // por isso a foto de pré-visualização do WhatsApp fica certa sem ninguém escrever o --url.
+  const urlDaVercel = process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "";
+  const urlBase = (valorDe("--url") || urlDaVercel).replace(/\/?$/, "/").replace(/^\/$/, "");
   const autonomo = flag("--autonomo");
 
   // Imagens: validadas antes de gerar nada, para o erro apontar o campo e não uma imagem partida.
@@ -156,7 +159,11 @@ ${readFileSync(doModelo("convite.js"), "utf8")}
 </html>
 `;
 
-  const destino = join(RAIZ, "dist", slug);
+  // --saida <pasta> escreve directamente nessa pasta (é o que a Vercel publica: "Output Directory").
+  // Recusa a raiz do projecto ou pastas fora dele, porque a pasta de destino é apagada antes de escrever.
+  const saida = valorDe("--saida");
+  const destino = saida ? resolve(RAIZ, saida) : join(RAIZ, "dist", slug);
+  if (saida && (destino === RAIZ || !destino.startsWith(RAIZ + sep))) falhar(`--saida tem de ser uma subpasta do projecto (recebi "${saida}").`);
   rmSync(destino, { recursive: true, force: true });
   mkdirSync(destino, { recursive: true });
   writeFileSync(join(destino, "index.html"), html, "utf8");
@@ -164,13 +171,14 @@ ${readFileSync(doModelo("convite.js"), "utf8")}
     mkdirSync(join(destino, "imagens"), { recursive: true });
     for (const f of readdirSync(join(pasta, "imagens"))) copyFileSync(join(pasta, "imagens", f), join(destino, "imagens", f));
   }
-  console.log(`OK  dist/${slug}/index.html${autonomo ? " (autónomo, imagens incluídas)" : ""}`);
+  console.log(`OK  ${destino.slice(RAIZ.length + 1).replace(/\\/g, "/")}/index.html${autonomo ? " (autónomo, imagens incluídas)" : ""}`);
 }
 
 if (flag("--todos")) {
   for (const d of readdirSync(join(RAIZ, "convites"), { withFileTypes: true })) if (d.isDirectory()) construir(d.name);
 } else {
-  const slug = args.find((a) => !a.startsWith("--") && a !== valorDe("--url"));
-  if (!slug) falhar("indica o convite: node scripts/construir.mjs <slug>   (ou --todos)");
+  // Na Vercel o convite vem da variável CONVITE do projecto (um projecto Vercel por convite).
+  const slug = args.find((a) => !a.startsWith("--") && a !== valorDe("--url") && a !== valorDe("--saida")) || process.env.CONVITE;
+  if (!slug) falhar("indica o convite: node scripts/construir.mjs <slug>   (ou --todos, ou a variável CONVITE)");
   construir(slug);
 }

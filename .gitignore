@@ -7,3 +7,5 @@ convites/*/convidados.csv
 
 node_modules/
 .vercel/
+
+public/
