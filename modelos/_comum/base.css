@@ -116,3 +116,10 @@ footer .assinatura { font-family: var(--f-script); font-size: 44px; color: var(-
 /* segundos da contagem: cada tique entra de cima */
 @keyframes tique { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
 .tique { animation: tique .45s ease both; }
+/* Música de fundo: o leitor do YouTube fica fora do ecrã (não pode ser display:none, ou não carrega). */
+#musica-leitor { position: fixed; left: -9999px; top: 0; width: 200px; height: 200px; pointer-events: none; }
+.musica-btn { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 50; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; display: grid; place-items: center; cursor: pointer; background: rgba(255,255,255,.92); color: #2F5B3A; box-shadow: 0 2px 10px rgba(0,0,0,.25); }
+.musica-btn svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.musica-btn .corte { display: none; }
+.musica-btn.mudo .corte { display: inline; }
+body.fechado .musica-btn { display: none; }

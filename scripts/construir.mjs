@@ -118,7 +118,7 @@ function construir(slug) {
   corpo = corpo.replace(/\{\{([\w.]+)\}\}/g, (_, caminho) => escapar(obter(dados, caminho)));
 
   // Só o necessário vai para o browser: a lista de convidados e outros dados do projecto ficam de fora.
-  const publico = { data: { iso: dados.data.iso }, whatsapp: dados.whatsapp };
+  const publico = { data: { iso: dados.data.iso }, whatsapp: dados.whatsapp, musica: dados.musica };
   const configuracao = JSON.stringify(publico).replace(/</g, "\\u003c");
 
   const temCapa = Boolean(dados.imagens?.capa);

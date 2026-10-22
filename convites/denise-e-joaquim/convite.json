@@ -63,6 +63,8 @@
     { "hora": "15:00", "icone": "talheres", "titulo": "Almoço", "descricao": "" }
   ],
 
+  "musica": { "youtube": "lY5V4hSLWY8", "inicio": 0, "volume": 60 },
+
   "seccoes": { "historia": false, "versiculo": true, "oval": true },
 
   "imagens": {
