@@ -31,6 +31,65 @@
     document.getElementById("rot-pessoas").textContent = "Quantas pessoas vêm? (máximo " + lugares + ")";
   }
 
+  // Música de fundo (opcional: "musica" no convite.json). O YouTube só deixa tocar com som depois de um
+  // toque do utilizador, por isso o leitor é preparado logo à partida (escondido, fora do ecrã) e o
+  // playVideo() é chamado dentro do clique que abre o envelope. Criá-lo só no clique falhava no iOS,
+  // porque o carregamento assíncrono da API já perdia o "gesto" do utilizador.
+  var musica = null;
+  if (C.musica && C.musica.youtube) {
+    (function () {
+      var pronto = false, pedido = false, tocar = false, leitor, botao;
+      function actualizarBotao() {
+        botao.classList.toggle("mudo", !tocar);
+        botao.setAttribute("aria-label", tocar ? "Pausar a música" : "Tocar a música");
+      }
+      function arrancar() {
+        pedido = true;
+        if (!pronto) return;
+        leitor.setVolume(C.musica.volume || 60);
+        leitor.playVideo();
+      }
+      botao = document.createElement("button");
+      botao.type = "button";
+      botao.className = "musica-btn mudo";
+      botao.hidden = true;
+      botao.setAttribute("aria-label", "Tocar a música");
+      botao.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/><path class="corte" d="M3 3l18 18"/></svg>';
+      botao.addEventListener("click", function () {
+        if (!pronto) return;
+        if (tocar) leitor.pauseVideo(); else arrancar();
+      });
+      document.body.appendChild(botao);
+
+      var alvo = document.createElement("div");
+      alvo.id = "musica-leitor";
+      alvo.setAttribute("aria-hidden", "true");
+      document.body.appendChild(alvo);
+      window.onYouTubeIframeAPIReady = function () {
+        leitor = new YT.Player("musica-leitor", {
+          width: 200, height: 200, videoId: C.musica.youtube,
+          playerVars: { playsinline: 1, controls: 0, disablekb: 1, rel: 0, start: C.musica.inicio || 0 },
+          events: {
+            onReady: function () { pronto = true; if (pedido) arrancar(); },
+            onStateChange: function (e) {
+              tocar = e.data === YT.PlayerState.PLAYING || e.data === YT.PlayerState.BUFFERING;
+              // Em ciclo: o convite pode ficar aberto mais tempo do que dura a música.
+              if (e.data === YT.PlayerState.ENDED) { leitor.seekTo(C.musica.inicio || 0); leitor.playVideo(); }
+              actualizarBotao();
+            },
+            // Vídeo removido ou sem permissão de incorporação: o convite continua a funcionar, sem som.
+            onError: function () { botao.hidden = true; pedido = false; }
+          }
+        });
+      };
+      var s = document.createElement("script");
+      s.src = "https://www.youtube.com/iframe_api";
+      s.async = true;
+      document.head.appendChild(s);
+      musica = { tocar: function () { botao.hidden = false; arrancar(); } };
+    })();
+  }
+
   // Envelope
   var env = document.getElementById("envelope");
   var abrir = document.getElementById("abrir");
@@ -39,6 +98,7 @@
   abrir.addEventListener("click", function () {
     if (env.classList.contains("aberto")) return;
     env.classList.add("aberto");
+    if (musica) musica.tocar();
     // O cartão (ou a capa) começa a aparecer quando o envelope já está a sair do ecrã.
     setTimeout(function () { document.body.classList.add("revelado"); }, reduzir ? 0 : 750);
     setTimeout(function () {
