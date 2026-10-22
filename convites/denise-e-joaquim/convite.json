@@ -46,14 +46,14 @@
       "nome": "Igreja Presbiteriana de Moçambique",
       "morada": ["Paróquia da Matola"],
       "mapa": "https://maps.app.goo.gl/DYnbfXixAQiv3e7R7",
-      "imagem": "igreja"
+      "imagem": "corredor"
     },
     {
       "rotulo": "Cerimónia civil e almoço",
       "nome": "Quinta Melucha",
       "morada": ["Estrada da Mozal, Novo Terminal de Zilinga"],
       "mapa": "https://maps.app.goo.gl/6WvfaEAKmbUWf8247",
-      "imagem": "salao"
+      "imagem": "mesa"
     }
   ],
 
@@ -70,7 +70,7 @@
   "imagens": {
     "capa":     { "ficheiro": "noivos.jpg",   "alt": "Denise e Joaquim, lado a lado num jardim ao entardecer" },
     "oval1":    { "ficheiro": "noivos.jpg",   "alt": "Denise e Joaquim, lado a lado num jardim ao entardecer" },
-    "igreja":   { "ficheiro": "igreja.jpg",   "alt": "Fachada da Igreja Presbiteriana de Moçambique, Paróquia de Khovo" },
-    "salao":    { "ficheiro": "salao.jpg",    "alt": "Pátio da Quinta Melucha, com mesas, chapéus-de-sol e piscina" }
+    "corredor": { "ficheiro": "corredor.jpg", "alt": "Corredor de cadeiras e arranjos de flores na cerimónia" },
+    "mesa":     { "ficheiro": "mesa.jpg",     "alt": "Mesa posta para o almoço, com flores e guardanapos azuis" }
   }
 }
