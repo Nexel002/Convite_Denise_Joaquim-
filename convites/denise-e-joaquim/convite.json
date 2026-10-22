@@ -68,9 +68,8 @@
   "seccoes": { "historia": false, "versiculo": true, "oval": true },
 
   "imagens": {
-    "capa":     { "ficheiro": "praia.jpg",    "alt": "Os noivos abraçados na praia" },
-    "oval1":    { "ficheiro": "confete.jpg",  "alt": "Os noivos a beijar-se debaixo de pétalas" },
-    "oval2":    { "ficheiro": "palmeira.jpg", "alt": "Os noivos a rir debaixo de uma palmeira" },
+    "capa":     { "ficheiro": "noivos.jpg",   "alt": "Denise e Joaquim, lado a lado num jardim ao entardecer" },
+    "oval1":    { "ficheiro": "noivos.jpg",   "alt": "Denise e Joaquim, lado a lado num jardim ao entardecer" },
     "corredor": { "ficheiro": "corredor.jpg", "alt": "Corredor de cadeiras e arranjos de flores na cerimónia" },
     "mesa":     { "ficheiro": "mesa.jpg",     "alt": "Mesa posta para o almoço, com flores e guardanapos azuis" }
   }

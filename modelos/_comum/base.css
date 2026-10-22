@@ -71,6 +71,8 @@ footer .assinatura { font-family: var(--f-script); font-size: 44px; color: var(-
   .oval img { animation: trocar 9s ease-in-out infinite, zoom 9s ease-out infinite; }
   .oval img:nth-child(2) { animation-delay: 4.5s; }
   .oval img:first-child { animation-delay: 0s; }
+  /* Com uma só fotografia não há para onde trocar: fica sempre visível, só com o zoom lento. */
+  .oval img:only-child { animation: zoom 9s ease-out infinite alternate; opacity: 1; }
   @keyframes trocar { 0%, 100% { opacity: 0; } 8%, 50% { opacity: 1; } 58% { opacity: 0; } }
 }
 .faixa-oval p { font-family: var(--f-display); font-size: 22px; letter-spacing: .14em; color: var(--destaque-claro); }
