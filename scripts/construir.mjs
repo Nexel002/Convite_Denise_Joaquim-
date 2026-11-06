@@ -79,16 +79,22 @@ function construir(slug) {
       return `      <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${traco}"/></svg><p><b>${escapar(p.titulo)}</b>${sub ? `<br><span class="h">${sub}</span>` : ""}</p></div>`;
     }).join("\n"),
     // "imagem" é opcional e aponta para uma chave de "imagens" (foto no topo do cartão do local).
-    locais: () => obter(dados, "locais").map((l) => `    <div class="local-cartao">
+    locais: () => obter(dados, "locais").map((l) => {
+      const iframeSrc = l.iframe ? (l.iframe.match(/src=["']([^"']+)["']/i)?.[1] || l.iframe) : null;
+      return `    <div class="local-cartao">
       ${l.imagem ? `<img class="foto-larga" src="${urlImagem(l.imagem)}" alt="${escapar(obter(dados, `imagens.${l.imagem}.alt`))}">` : ""}
       ${l.rotulo ? `<p class="rotulo">${escapar(l.rotulo)}</p>` : ""}
       <h3>${escapar(l.nome)}</h3>
-      <p>${l.morada.map(escapar).join("<br>")}</p>
+      <p>${l.morada.map(escapar).join("<br>")}</p>${iframeSrc ? `
+      <div class="mapa-embed">
+        <iframe src="${escapar(iframeSrc)}" width="100%" height="260" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>` : ""}
       <div class="botoes">
         <a class="btn cheio" href="${escapar(l.mapa)}" target="_blank" rel="noopener">Abrir mapa</a>${l.waze ? `
         <a class="btn" href="${escapar(l.waze)}" target="_blank" rel="noopener">Waze</a>` : ""}
       </div>
-    </div>`).join("\n"),
+    </div>`;
+    }).join("\n"),
     programa: () => obter(dados, "programa").map((p) => {
       const traco = icones[p.icone];
       if (!traco) falhar(`ícone "${p.icone}" desconhecido. Disponíveis: ${Object.keys(icones).join(", ")}.`);

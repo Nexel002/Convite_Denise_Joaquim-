@@ -30,6 +30,8 @@ section h2 { font-size: clamp(34px, 8vw, 48px); line-height: 1.1; }
 
 .local-cartao { background: var(--papel-2); padding: 28px; display: grid; gap: 14px; }
 .local-cartao h3 { font-size: 28px; }
+.mapa-embed { width: 100%; overflow: hidden; border: 1px solid var(--linha); }
+.mapa-embed iframe { display: block; border: 0; width: 100%; height: 260px; }
 .botoes { display: flex; flex-wrap: wrap; gap: 10px; }
 .btn {
   display: inline-block; font: 500 14px/1 var(--f-corpo); letter-spacing: .12em; text-transform: uppercase;

@@ -52,7 +52,8 @@
       "rotulo": "Cerimónia civil e almoço",
       "nome": "Quinta Melucha",
       "morada": ["Estrada da Mozal, Novo Terminal de Zilinga"],
-      "mapa": "https://maps.app.goo.gl/6WvfaEAKmbUWf8247",
+      "mapa": "https://www.google.com/maps/search/?api=1&query=-25.875194,32.367139",
+      "iframe": "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3589.826067422852!2d32.36455974656825!3d-25.875201383753094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDUyJzMwLjciUyAzMsKwMjInMDEuNyJF!5e0!3m2!1sen!2smz!4v1793963068413!5m2!1sen!2smz",
       "imagem": "mesa"
     }
   ],
