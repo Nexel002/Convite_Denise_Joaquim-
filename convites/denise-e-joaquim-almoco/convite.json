@@ -1,0 +1,68 @@
+{
+  "modelo": "casamento-folhagem",
+  "titulo": "Almoço de Domingo · Denise e Joaquim",
+  "cidade": "Matola",
+
+  "noivos": { "noiva": "Denise", "noivo": "Joaquim", "iniciais": "D&J" },
+
+  "data": {
+    "iso": "2026-12-06T14:00:00+02:00",
+    "diaSemana": "Domingo",
+    "extenso": "Domingo, 6 de Dezembro de 2026",
+    "mes": "DEZ",
+    "diaSemanaCurto": "DOM",
+    "dia": "06",
+    "ano": "2026",
+    "curta": "06 · 12 · 2026",
+    "ponto": "06.12.2026",
+    "limiteRsvp": "07/11/2026"
+  },
+
+  "whatsapp": {
+    "numero": "258849414997",
+    "numeroVisivel": "+258 84 941 4997 (Leonel Mutimba)",
+    "mensagemSim": "Olá Leonel! Sou {nome} e confirmo presença no almoço de domingo da Denise e do Joaquim ({pessoas}).",
+    "mensagemNao": "Olá Leonel! Sou {nome} e infelizmente não poderei ir ao almoço de domingo da Denise e do Joaquim.",
+    "mensagemConvite": "Olá, {nome}! A Denise e o Joaquim têm a alegria de convidar você para o almoço de domingo. Abra o seu convite aqui: {link}"
+  },
+
+  "textos": {
+    "convite": "Denise e Joaquim convidam para o seu almoço de domingo.",
+    "versiculo": "Para que todos vejam, saibam, considerem e compreendam que a mão do Senhor realizou isso…",
+    "versiculoRef": "Isaías 41:20",
+    "bencao": "Com a bênção de Deus e dos seus pais:",
+    "convidam": "Convidam para o almoço de domingo:",
+    "localizacao": "IMAP - Instituto de Formação de Professores da Matola"
+  },
+
+  "pais": [
+    { "nomes": [{ "nome": "Amadeu Generoso", "memoria": true }, { "nome": "Especiosa Mingana", "memoria": true }] },
+    { "nomes": [{ "nome": "Joaquim Mutimba", "memoria": true }, "Célia Fumo"] }
+  ],
+
+  "locais": [
+    {
+      "rotulo": "Almoço de domingo",
+      "nome": "IMAP - Instituto de Formação de Professores da Matola",
+      "morada": ["Matola"],
+      "mapa": "https://maps.app.goo.gl/FRB9t1eeH15zV3Jx6",
+      "iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3588.665324391262!2d32.4529052!3d-25.9500861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ee68f57d3bf647b%3A0x58ba11356ed7810d!2sInstituto%20de%20Forma%C3%A7%C3%A3o%20de%20Professores%20de%20Matola!5e0!3m2!1sen!2smz",
+      "imagem": "mesa"
+    }
+  ],
+
+  "programa": [
+    { "hora": "14:00", "icone": "talheres", "titulo": "Almoço de Domingo", "descricao": "IMAP - Matola" }
+  ],
+
+  "musica": { "youtube": "lY5V4hSLWY8", "inicio": 0, "volume": 60 },
+
+  "seccoes": { "historia": false, "versiculo": true, "oval": true },
+
+  "imagens": {
+    "capa":     { "ficheiro": "noivos.jpg",   "alt": "Denise e Joaquim, lado a lado num jardim ao entardecer" },
+    "oval1":    { "ficheiro": "noivos.jpg",   "alt": "Denise e Joaquim, lado a lado num jardim ao entardecer" },
+    "corredor": { "ficheiro": "corredor.jpg", "alt": "Corredor de cadeiras e arranjos de flores na cerimónia" },
+    "mesa":     { "ficheiro": "mesa.jpg",     "alt": "Mesa posta para o almoço, com flores e guardanapos azuis" }
+  }
+}
